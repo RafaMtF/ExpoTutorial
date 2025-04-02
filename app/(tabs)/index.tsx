@@ -7,7 +7,9 @@ import { StyleSheet, View } from "react-native";
 const placeHolderImage = require("@/assets/images/background-image.png");
 
 export default function Index() {
-  const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined)
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(
+    undefined
+  );
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -17,7 +19,7 @@ export default function Index() {
     });
 
     if (!result.canceled) {
-      setSelectedImage(result.assets[0].uri)
+      setSelectedImage(result.assets[0].uri);
     } else {
       alert("You didn't select any image.");
     }
@@ -26,10 +28,17 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer imgSource={placeHolderImage} selectedImage={selectedImage}/>
+        <ImageViewer
+          imgSource={placeHolderImage}
+          selectedImage={selectedImage}
+        />
       </View>
       <View>
-        <Button onPress={pickImageAsync} label={"Choose a photo"} theme="primary" />
+        <Button
+          onPress={pickImageAsync}
+          label={"Choose a photo"}
+          theme="primary"
+        />
         <Button label={"Use this photo"} />
       </View>
     </View>
