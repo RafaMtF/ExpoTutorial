@@ -2,9 +2,9 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 type Props = {
-  onPress: () => void;
   label: String;
   theme?: "primary";
+  onPress?: () => void;
 };
 
 export default function Button({ onPress, label, theme }: Props) {
@@ -18,7 +18,7 @@ export default function Button({ onPress, label, theme }: Props) {
       >
         <Pressable
           style={[styles.button, { backgroundColor: "#fff" }]}
-          onPress={() => alert("You pressed a button.")}
+          onPress={onPress}
         >
           <FontAwesome
             name="picture-o"
